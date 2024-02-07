@@ -1,0 +1,37 @@
+.form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 10px;
+  color: #8b8b8b;
+}
+
+.form__input {
+  border: none;
+  border-bottom: 1px solid #8b8b8b;
+  background-color: transparent;
+  padding: 0 0 10px 0;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  color: #fff;
+}
+
+.form__input:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.form__button {
+  background-color: #4285f4;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  padding: 15px 0;
+  border: none;
+  color: #fff;
+}
