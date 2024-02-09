@@ -20,8 +20,8 @@ const Register = () => {
 
   // Функции
   const handleChange = (evt) => {
-    if(evt.target.name === "email") {
-      if(!re.test(String(evt.target.value).toLocaleLowerCase())) {
+    if (evt.target.name === "email") {
+      if (!re.test(String(evt.target.value).toLocaleLowerCase())) {
         setError({
           ...error,
           email: "Неккоректный email",
@@ -42,12 +42,6 @@ const Register = () => {
       ...data,
       [evt.target.name]: evt.target.value,
     });
-
-    if(error.evt.target.name.length !== 0) {
-      evt.target.classList.add('register__form-input_color_red');
-    } else {
-      evt.target.classList.remove('register__form-input_color_red');
-    };
   };
 
   const handleSubmit = (evt) => {
@@ -58,7 +52,7 @@ const Register = () => {
   // useEffect
   React.useEffect(() => {
     setIsDisabled(data.name.length <= 1 || data.email.length <= 1 || data.password.length <= 1 || error.name || error.email || error.password);
-  }, [data.name, data.email, data.password])
+  }, [data.name, data.email, data.password, error.name, error.email, error.password])
 
   // Вёрстка
   return (
@@ -73,18 +67,18 @@ const Register = () => {
           <fieldset className="register__form-fieldset">
             <label className="register__form-label">
               Имя
-              <input className="register__form-input" onChange={handleChange} value={data.name} type="text" name="name" required autoComplete="off" minLength={3} maxLength={20}></input>
+              <input className={error.name ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.name} type="text" name="name" required autoComplete="off" minLength={3} maxLength={20} />
               <span className="register__form-error" id="name-error">{error.name}</span>
             </label>
             <label className="register__form-label">
               E-mail
-              <input className="register__form-input" onChange={handleChange} value={data.email} type="email" name="email" required autoComplete="off"></input>
+              <input className={error.email ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.email} type="email" name="email" required autoComplete="off" />
               <span className="register__form-error" id="email-error">{error.email}</span>
             </label>
 
             <label className="register__form-label">
               Пароль
-              <input className="register__form-input register__form-input_type_password" onChange={handleChange} value={data.password} type="password" name="password" required autoComplete="off" minLength={3}></input>
+              <input className={error.password ? "register__form-input register__form-input_type_password register__form-input_color_red" : "register__form-input register__form-input_type_password"} onChange={handleChange} value={data.password} type="password" name="password" required autoComplete="off" minLength={3} />
               <span className="register__form-error" id="password-error">{error.password}</span>
             </label>
           </fieldset>

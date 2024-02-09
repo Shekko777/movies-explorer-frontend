@@ -69,7 +69,7 @@
   line-height: 12px;
 }
 
-.login__bottom {
+.login__form-bottom {
   position: absolute;
   right: 0;
   left: 0;
@@ -90,6 +90,10 @@
   font-weight: 500;
 }
 
+.login__form-button_type_disabled {
+  opacity: .8;
+}
+
 .login__bottom-text {
   margin: 0 5px 0 0;
   font-weight: 400;
@@ -102,4 +106,54 @@
 .login__bottom-link {
   text-decoration: none;
   color: #4285f4;
+}
+
+@media screen and (max-width: 768px) {
+  .login__container {
+    padding-top: 232px;
+  }
+
+  .login__form-bottom {
+    bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .login__container {
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login__title {
+    margin: 45px 0 80px;
+  }
+
+  .login__form {
+    width: 100%;
+  }
+
+  .login__form-label:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .login__form-error {
+    height: 24px;
+    bottom: -24px;
+  }
+
+  .login__form-bottom {
+    bottom: 30px;
+  }
+
+  .login__form-button {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .login__bottom-text {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }

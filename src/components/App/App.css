@@ -1,6 +1,10 @@
 @import url(../../vendor/font.css);
 /* ГЛОБАЛЬНЫЕ */
+html {
+}
+
 .body {
+  overflow-y: scroll; /* Убрал прыг-скоки из-за появляющегося скролла */
   background-color: #202020;
   color: #fff;
   font-family: "Inter", sans-serif;

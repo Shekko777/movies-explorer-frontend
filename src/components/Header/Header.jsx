@@ -26,13 +26,13 @@ const Header = ({ login, themeLight }) => {
                 <NavLink className={({ isActive }) => `header-nav__link ${isActive ? "header-nav__link_active" : ""}`} to="/">Главная</NavLink>
               </li>
               <li className="header-nav__item">
-                <NavLink className={({ isActive }) => `header-nav__link ${isActive ? "header-nav__link_active" : ""}`} to="/account">Фильмы</NavLink>
+                <NavLink className={({ isActive }) => `header-nav__link ${isActive ? "header-nav__link_active" : ""}`} to="/movies">Фильмы</NavLink>
               </li>
               <li className="header-nav__item">
-                <NavLink className={({ isActive }) => `header-nav__link ${isActive ? "header-nav__link_active" : ""}`} to="/saved-films">Сохранённые фильмы</NavLink>
+                <NavLink className={({ isActive }) => `header-nav__link ${isActive ? "header-nav__link_active" : ""}`} to="/saved-movies">Сохранённые фильмы</NavLink>
               </li>
             </ul>
-            <Link className="header-nav__link-account" to="/account">Аккаунт <img className={themeLight ? "header__button-img header__button-img_theme_light" : "header__button-img"} src={accountIcon} alt="Кнопка аккаунт" /></Link>
+            <Link className="header-nav__link-account" to="/profile">Аккаунт <img className={themeLight ? "header__button-img header__button-img_theme_light" : "header__button-img"} src={accountIcon} alt="Кнопка аккаунт" /></Link>
           </nav>
         </div>
       ) : (

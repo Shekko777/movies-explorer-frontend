@@ -175,7 +175,7 @@
   }
 }
 
-@media  screen and (max-width: 545px) {
+@media  screen and (max-width: 450px) {
   .header {
     padding: 18px 14px;
   }
