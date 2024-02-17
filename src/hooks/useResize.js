@@ -15,7 +15,7 @@ export const useResize = () => {
 
   if(width <= 450) {
     return {
-      quantity: 4,
+      quantity: 5,
       term: 1,
     };
   } else if (width > 450 && width <= 768) {

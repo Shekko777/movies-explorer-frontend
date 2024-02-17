@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import loginLogo from '../../images/login/login-logo.svg';
+import logoSvg from '../../images/logo.svg';
 import './Login.css';
 
 const Login = () => {
@@ -14,12 +14,12 @@ const Login = () => {
     password: "",
   });
   const [isDisabled, setIsDisabled] = React.useState(false);
-  const re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  const emailRegex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
   // Функции
   const handleChange = (evt) => {
     if (evt.target.name === "email") {
-      if (!re.test(String(evt.target.value).toLocaleLowerCase())) {
+      if (!emailRegex.test(String(evt.target.value).toLocaleLowerCase())) {
         setError({
           ...error,
           email: "Неккоректный email",
@@ -57,7 +57,7 @@ const Login = () => {
     <div className="login">
       <div className="login__container">
         <Link className="login__link" to="/">
-          <img className="login__logo" src={loginLogo} alt="Логотип сайта" />
+          <img className="login__logo" src={logoSvg} alt="Логотип сайта" />
         </Link>
         <h1 className="login__title">Рады видеть!</h1>
 
@@ -78,7 +78,7 @@ const Login = () => {
 
           <div className="login__form-bottom">
             <button className={isDisabled ? "login__form-button login__form-button_type_disabled" : "login__form-button"} type="submit" disabled={isDisabled}>Войти</button>
-            <p className="login__bottom-text">Еще не зарегистрированны? <Link className="login__bottom-link" to="/register">Регистрация</Link></p>
+            <p className="login__bottom-text">Еще не зарегистрированны? <Link className="login__bottom-link" to="/signup">Регистрация</Link></p>
           </div>
         </form>
       </div>

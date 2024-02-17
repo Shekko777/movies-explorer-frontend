@@ -1,23 +1,19 @@
 @import url(../../vendor/font.css);
-/* ГЛОБАЛЬНЫЕ */
-html {
-}
 
+.app {
+  position: relative;
+  height: 100vh;
+}
+/* ВСЕОБЩИЕ СТИЛИ */
 .body {
-  overflow-y: scroll; /* Убрал прыг-скоки из-за появляющегося скролла */
+  margin: 0;
   background-color: #202020;
   color: #fff;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
-  margin: 0;
-}
-
-#root {
-  position: relative;
   overflow-x: hidden;
-  width: 100%;
 }
 
 .container {

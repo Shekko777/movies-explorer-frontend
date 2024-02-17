@@ -50,6 +50,11 @@
   width: 100%;
   outline: none;
   color: #fff;
+  transition: border-color .2s;
+}
+
+.register__form-input:focus {
+  border-color: #4285F4;
 }
 
 .register__form-input_type_password {
@@ -106,6 +111,11 @@
 .register__bottom-link {
   text-decoration: none;
   color: #4285f4;
+  transition: opacity .2s;
+}
+
+.register__bottom-link:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 768px) {

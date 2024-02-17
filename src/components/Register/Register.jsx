@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import registerLogo from '../../images/register/register-logo.svg';
+import logoSvg from '../../images/logo.svg';
 import './Register.css';
 
 const Register = () => {
@@ -16,12 +16,12 @@ const Register = () => {
     password: "",
   });
   const [isDisabled, setIsDisabled] = React.useState(true);
-  const re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  const emailRegex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
   // Функции
   const handleChange = (evt) => {
     if (evt.target.name === "email") {
-      if (!re.test(String(evt.target.value).toLocaleLowerCase())) {
+      if (!emailRegex.test(String(evt.target.value).toLocaleLowerCase())) {
         setError({
           ...error,
           email: "Неккоректный email",
@@ -59,7 +59,7 @@ const Register = () => {
     <div className="register">
       <div className="register__container">
         <Link className="register__link" to="/">
-          <img className="register__logo" src={registerLogo} alt="Логотип сайта" />
+          <img className="register__logo" src={logoSvg} alt="Логотип сайта" />
         </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
 
@@ -85,7 +85,7 @@ const Register = () => {
 
           <div className="register__form-bottom">
             <button className={isDisabled ? "register__form-button register__form-button_type_disabled" : "register__form-button"} type="submit" disabled={isDisabled}>Зарегистрироваться</button>
-            <p className="register__bottom-text">Уже зарегистрированны? <Link className="register__bottom-link" to="/login">Войти</Link></p>
+            <p className="register__bottom-text">Уже зарегистрированны? <Link className="register__bottom-link" to="/signin">Войти</Link></p>
           </div>
         </form>
       </div>

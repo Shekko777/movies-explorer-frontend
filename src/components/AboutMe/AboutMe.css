@@ -1,10 +1,6 @@
 .about-me {
-  padding: 110px 0 125px 0;
+  padding: 110px 0 100px 0;
   background-color: #202020;
-}
-
-.about-me__container {
-  margin-bottom: 100px;
 }
 
 .about-me__info {
@@ -48,11 +44,7 @@
 
 @media screen and (max-width: 768px) {
   .about-me {
-    padding: 90px 0;
-  }
-
-  .about-me__container {
-    margin-bottom: 91px;
+    padding: 90px 0 90px;
   }
 
   .about-me__info-wrapper {
@@ -84,11 +76,10 @@
 
 @media screen and (max-width: 545px) {
   .about-me {
-    padding: 70px 0;
+    padding: 70px 0 70px;
   }
 
   .about-me__container {
-    margin-bottom: 70px;
     padding: 0 14px;
   }
 

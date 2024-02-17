@@ -1,4 +1,4 @@
-.moies__card {
+.movies__card {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -50,6 +50,11 @@
   font-size: 12px;
   line-height: 11px;
   font-weight: 400;
+  cursor: pointer;
+}
+
+.movies__card-button:hover {
+  opacity: .8;
 }
 
 .movies__card-button_type_saved {

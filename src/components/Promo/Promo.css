@@ -38,6 +38,13 @@
   color: #fff;
   text-decoration: none;
   padding: 10px 20px;
+  background-color: transparent;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+
+.promo__button:hover {
+  opacity: .8;
 }
 
 .promo__img {

@@ -33,6 +33,12 @@
   font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.search-form__button:hover {
+  opacity: .8;
 }
 
 .search-form__checkbox-wrapper {
@@ -54,6 +60,7 @@
   display: inline-block;
   width: 36px;
   height: 20px;
+  cursor: pointer;
 }
 
 .search-form__checkbox-span::before, .search-form__checkbox-span::after {
@@ -109,6 +116,12 @@
     padding: 13px 20px;
     font-size: 14px;
     line-height: 18px;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+
+  .search-form__button:hover {
+    opacity: .8;
   }
 
   .search-form__checkbox-wrapper {

@@ -1,6 +1,5 @@
 import './AboutMe.css';
-import Portfolio from '../Portfolio/Portfolio';
-import avatarJpg from '../../images/avatar.jpg';
+import avatarJpg from '../../images/about-me/avatar.jpg';
 
 const AboutMe = () => {
   return (
@@ -19,7 +18,6 @@ const AboutMe = () => {
         </div>
       </div>
 
-      <Portfolio />
     </section>
   )
 }

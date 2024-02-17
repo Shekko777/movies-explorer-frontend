@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
-const MoviesCardList = ({ children }) => {
+const MoviesCardList = ({ movies, children }) => {
   return (
-    <ul className="movies__list">
+    <ul className={movies ? "movies__list" : "movies__list movies__list_empty"} >
       {children}
     </ul>
   )
