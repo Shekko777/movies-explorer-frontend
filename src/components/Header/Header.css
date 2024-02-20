@@ -15,6 +15,14 @@
   padding: 18px 30px;
 }
 
+.header__link {
+  transition: opacity .2s;
+}
+
+.header__link:hover {
+  opacity: .8;
+}
+
 .header-registered__burger {
   display: none;
   position: relative;
@@ -87,6 +95,11 @@
   padding-bottom: 4px;
   text-decoration: none;
   color: #ffffff;
+  transition: opacity .2s;
+}
+
+.header-nav__link:hover {
+  opacity: .7;
 }
 
 .header-nav__link_active {
@@ -99,6 +112,11 @@
   align-items: center;
   text-decoration: none;
   color: #fff;
+  transition: opacity .2s;
+}
+
+.header-nav__link-account:hover {
+  opacity: .8;
 }
 
 .header__button-register {
@@ -106,6 +124,11 @@
   margin-right: 30px;
   text-decoration: none;
   color: #fff;
+  transition: opacity .2s;
+}
+
+.header__button-register:hover {
+  opacity: .8;
 }
 
 .header__button-login {
@@ -116,6 +139,11 @@
   font-size: 12px;
   text-decoration: none;
   color: #fff;
+  transition: opacity .2s;
+}
+
+.header__button-login:hover {
+  opacity: .8;
 }
 
 .header__button-img {
@@ -152,6 +180,20 @@
 
   .header__button-img_theme_light {
     background-color: #313131;
+  }
+
+  .header-registered_disabled::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .4s, background-color .4s;
+    background-color: #000;
+    opacity: .3;
   }
 
   .header-registered__burger {

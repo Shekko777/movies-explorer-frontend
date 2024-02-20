@@ -20,13 +20,13 @@ const Header = ({ login }) => {
   if (headerLocation.includes(location.pathname)) {
     return (
       <header className={location.pathname === '/' ? "header header_type_main" : "header"}>
-        <div className="header__container">
+        <nav className="header__container">
           <Link className="header__link" to="/">
             <img className="header__logo" src={logoSvg} alt="Логотип сайта" />
           </Link>
           {login ? (
-            <div className="header-registered">
-              <button className={burgerMenuStatus ? "header-registered__burger header-registered__burger_active" : "header-registered__burger"} onClick={handleBurgerClick}></button>
+            <div className={burgerMenuStatus ? "header-registered header-registered_disabled" : "header-registered"}>
+              <button className={burgerMenuStatus ? "header-registered__burger header-registered__burger_active" : "header-registered__burger"} onClick={handleBurgerClick} type="button"></button>
               <nav className={burgerMenuStatus ? "header-nav header-nav_active" : "header-nav"}>
                 <ul className="header-nav__list">
                   <li className="header-nav__item">
@@ -48,7 +48,7 @@ const Header = ({ login }) => {
               <a className="header__button-login" href="/signin">Войти</a>
             </div>
           )}
-        </div>
+        </nav>
       </header>
     )
   }

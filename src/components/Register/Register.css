@@ -15,6 +15,14 @@
   height: 100%;
 }
 
+.register__link {
+  transition: opacity .2s;
+}
+
+.register__link:hover {
+  opacity: .8;
+}
+
 .register__title {
   margin: 40px 0;
   font-weight: 500;
@@ -57,6 +65,10 @@
   border-color: #4285F4;
 }
 
+.register__form-input::placeholder {
+  font-size: 0;
+}
+
 .register__form-input_type_password {
   letter-spacing: 0.22em;
 }
@@ -91,7 +103,7 @@
   color: #fff;
   border-radius: 3px;
   margin-bottom: 16px;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-weight: 500;
 }
 

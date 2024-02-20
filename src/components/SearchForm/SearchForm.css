@@ -10,6 +10,11 @@
   margin: 0 0 26px 0;
   display: flex;
   justify-content: space-between;
+  transition: border-color .2s;
+}
+
+.search-form__fieldset_focus {
+  border-color: #4285F4;
 }
 
 .search-form__input {
@@ -34,6 +39,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  outline-color: #4285F4;
   transition: opacity .2s;
 }
 
@@ -61,6 +67,11 @@
   width: 36px;
   height: 20px;
   cursor: pointer;
+  transition: opacity .2s;
+}
+
+.search-form__checkbox-span:hover {
+  opacity: .8;
 }
 
 .search-form__checkbox-span::before, .search-form__checkbox-span::after {

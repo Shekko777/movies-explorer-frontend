@@ -74,7 +74,7 @@
   transition: opacity .2s;
 }
 
-.profile__form-button {
+.profile__form-button:hover {
   opacity: .8;
 }
 
@@ -85,7 +85,7 @@
   transition: opacity .2s;
 }
 
-.profile__form-button {
+.profile__form-exit:hover {
   opacity: .8;
 }
 

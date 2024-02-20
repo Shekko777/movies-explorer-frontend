@@ -8,7 +8,7 @@ import films from "../../utils/constants";
 
 const SavedMovies = () => {
   return (
-    <section className="saved-movies">
+    <main className="saved-movies main">
       <div className="saved-movies__container">
         <SearchForm />
         <MoviesCardList movies={true}>
@@ -21,7 +21,7 @@ const SavedMovies = () => {
           })}
         </MoviesCardList>
       </div>
-    </section>
+    </main>
   )
 }
 

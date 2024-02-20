@@ -1,19 +1,12 @@
-.movies {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .movies__container {
   max-width: 1200px;
   width: 100%;
-  flex: 1 1 auto;
   margin: 0 auto;
   padding: 70px 30px 80px;
   box-sizing: border-box;
 }
 
-.movies__button {
+.movies__more {
   padding: 11px 0;
   width: 100%;
   font-size: 12px;
@@ -26,11 +19,11 @@
   transition: opacity .2s;
 }
 
-.movies__button:hover {
+.movies__more:hover {
   opacity: .8;
 }
 
-.movies__button_type_disabled {
+.movies__more_type_disabled {
   display: none;
 }
 

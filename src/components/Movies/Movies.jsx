@@ -23,15 +23,15 @@ const Movies = () => {
   }
 
   return (
-    <section className="movies">
+    <main className="movies main">
       <div className="movies__container">
         <SearchForm />
         <MoviesCardList movies={itemsToRender}>
           {itemsToRender ? itemsToRender.map((film, index) => ( <MoviesCard key={index} film={film} /> )) : <Preloader />}
         </MoviesCardList>
-        {itemsToRender && <button onClick={handleButtonShowMore} className={quantityCards > films.length ? "movies__button movies__button_type_disabled" : "movies__button"} disabled={quantityCards > films.length}>Ещё</button>}
+        {itemsToRender && <button onClick={handleButtonShowMore} type="button" className={quantityCards > films.length ? "movies__more movies__more_type_disabled" : "movies__more"} disabled={quantityCards > films.length}>Ещё</button>}
       </div>
-    </section>
+    </main>
   )
 }
 

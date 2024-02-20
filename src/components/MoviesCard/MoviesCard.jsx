@@ -18,26 +18,26 @@ const MoviesCard = ({ film, savedFilm }) => {
   if (savedFilm) {
     return (
       <li ref={ref} className="movies__card">
-        <div className="movies__card-info">
-          <p className="movies__card-name">{film?.name}</p>
-          <p className="movies__card-time">{film?.time.hours}ч {film?.time.minutes}м</p>
+        <div className="movies__info">
+          <h2 className="movies__name">{film?.name}</h2>
+          <p className="movies__time">{film?.time.hours}ч {film?.time.minutes}м</p>
         </div>
-        <img className="movies__card-img" src={film?.image} alt="Картинка фильма" />
-        <button onClick={handleRemoveMovie} className="movies__card-button"><img className="movies__card-icon" src={deleteIcon} alt="Кнопка удаляющая фильм" /></button>
+        <img className="movies__img" src={film?.image} alt={`Постер к фильму '${film.name}'`} />
+        <button onClick={handleRemoveMovie} className="movies__button"><img className="movies__icon" src={deleteIcon} alt="Кнопка удаляющая фильм" /></button>
       </li>
     )
   } else {
     return (
       <li className="movies__card">
-        <div className="movies__card-info">
-          <p className="movies__card-name">{film?.name}</p>
-          <p className="movies__card-time">{film?.time.hours}ч {film?.time.minutes}м</p>
+        <div className="movies__info">
+          <h2 className="movies__name">{film?.name}</h2>
+          <p className="movies__time">{film?.time.hours}ч {film?.time.minutes}м</p>
         </div>
-        <img className="movies__card-img" src={film?.image} alt="Картинка фильма" />
+        <img className="movies__img" src={film?.image} alt={`Постер к фильму '${film.name}'`} />
         {isSaved ? (
-          <button onClick={handleSaveButton} className="movies__card-button movies__card-button_type_saved" type="button"><img className="movies__card-icon" src={savedIcon} alt="Фильм сохранён" /></button>
+          <button onClick={handleSaveButton} className="movies__button movies__button_type_saved" type="button"><img className="movies__icon" src={savedIcon} alt="Фильм сохранён" /></button>
         ) : (
-          <button onClick={handleSaveButton} className="movies__card-button" type="button">Сохранить</button>
+          <button onClick={handleSaveButton} className="movies__button" type="button">Сохранить</button>
         )}
       </li>
     )

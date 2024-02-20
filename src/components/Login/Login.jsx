@@ -54,7 +54,7 @@ const Login = () => {
 
   // Вёрстка
   return (
-    <div className="login">
+    <main className="login main">
       <div className="login__container">
         <Link className="login__link" to="/">
           <img className="login__logo" src={logoSvg} alt="Логотип сайта" />
@@ -65,13 +65,13 @@ const Login = () => {
           <fieldset className="login__form-fieldset">
             <label className="login__form-label">
               E-mail
-              <input className={error.email ? "login__form-input login__form-input_color_red" : "login__form-input"} onChange={handleChange} value={data.email} type="email" name="email" required autoComplete="off" />
+              <input className={error.email ? "login__form-input login__form-input_color_red" : "login__form-input"} onChange={handleChange} value={data.email} placeholder='E-mail' type="email" name="email" required autoComplete="off" />
               <span className="login__form-error" id="email-error">{error.email}</span>
             </label>
 
             <label className="login__form-label">
               Пароль
-              <input className={error.password ? "login__form-input login__form-input_type_password login__form-input_color_red" : "login__form-input login__form-input_type_password"} onChange={handleChange} value={data.password} type="password" name="password" required autoComplete="off" minLength={3} />
+              <input className={error.password ? "login__form-input login__form-input_type_password login__form-input_color_red" : "login__form-input login__form-input_type_password"} onChange={handleChange} value={data.password} placeholder='Пароль' type="password" name="password" required autoComplete="off" minLength={2} maxLength={30} />
               <span className="login__form-error" id="password-error">{error.password}</span>
             </label>
           </fieldset>
@@ -82,7 +82,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </div>
+    </main>
   )
 }
 

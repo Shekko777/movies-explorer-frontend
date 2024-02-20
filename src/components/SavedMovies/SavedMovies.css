@@ -1,11 +1,4 @@
-.saved-movies {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .saved-movies__container {
-  flex: 1 1 auto;
   max-width: 1200px;
   box-sizing: border-box;
   width: 100%;

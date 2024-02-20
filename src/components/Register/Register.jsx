@@ -56,7 +56,7 @@ const Register = () => {
 
   // Вёрстка
   return (
-    <div className="register">
+    <main className="register main">
       <div className="register__container">
         <Link className="register__link" to="/">
           <img className="register__logo" src={logoSvg} alt="Логотип сайта" />
@@ -67,18 +67,18 @@ const Register = () => {
           <fieldset className="register__form-fieldset">
             <label className="register__form-label">
               Имя
-              <input className={error.name ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.name} type="text" name="name" required autoComplete="off" minLength={3} maxLength={20} />
+              <input className={error.name ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.name} type="text" name="name" required autoComplete="off" minLength={3} maxLength={20} placeholder='Имя' />
               <span className="register__form-error" id="name-error">{error.name}</span>
             </label>
             <label className="register__form-label">
               E-mail
-              <input className={error.email ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.email} type="email" name="email" required autoComplete="off" />
+              <input className={error.email ? "register__form-input register__form-input_color_red" : "register__form-input"} onChange={handleChange} value={data.email} type="email" name="email" required autoComplete="off" placeholder='E-mail'/>
               <span className="register__form-error" id="email-error">{error.email}</span>
             </label>
 
             <label className="register__form-label">
               Пароль
-              <input className={error.password ? "register__form-input register__form-input_type_password register__form-input_color_red" : "register__form-input register__form-input_type_password"} onChange={handleChange} value={data.password} type="password" name="password" required autoComplete="off" minLength={3} />
+              <input className={error.password ? "register__form-input register__form-input_type_password register__form-input_color_red" : "register__form-input register__form-input_type_password"} onChange={handleChange} value={data.password} type="password" name="password" required autoComplete="off" minLength={2} maxLength={30} placeholder='Пароль'/>
               <span className="register__form-error" id="password-error">{error.password}</span>
             </label>
           </fieldset>
@@ -89,7 +89,7 @@ const Register = () => {
           </div>
         </form>
       </div>
-    </div>
+    </main>
   )
 }
 
