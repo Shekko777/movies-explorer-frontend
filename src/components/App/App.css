@@ -1,0 +1,51 @@
+@import url(../../vendor/font.css);
+
+.body {
+  margin: 0;
+  background-color: #202020;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #dadada;
+  margin: 0;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 730px; 
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .title {
+    padding-bottom: 28px;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+}
