@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logoSvg from '../../images/logo.svg';
 import './Register.css';
 
-const Register = () => {
+const Register = ({ onRegister }) => {
   // Константы
   const [data, setData] = React.useState({
     name: "",
@@ -16,7 +16,9 @@ const Register = () => {
     password: "",
   });
   const [isDisabled, setIsDisabled] = React.useState(true);
+  const [errorRegister, setErrorRegister] = React.useState('');
   const emailRegex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  const nameRegex = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/;
 
   // Функции
   const handleChange = (evt) => {
@@ -30,6 +32,18 @@ const Register = () => {
         setError({
           ...error,
           email: "",
+        })
+      }
+    } else if(evt.target.name === "name") {
+      if (!nameRegex.test(String(evt.target.value).toLocaleLowerCase())) {
+        setError({
+          ...error,
+          name: "Неподходящее имя.",
+        });
+      } else {
+        setError({
+          ...error,
+          name: "",
         })
       }
     } else {
@@ -46,13 +60,20 @@ const Register = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log([data.name, data.email, data.password])
+    onRegister(data.name, data.email, data.password)
+      .catch((err) => {
+        if (err === 409) {
+          setErrorRegister('Такой пользователь уже зарегистрирован');
+        } else {
+          setErrorRegister('На сервере произошла ошибка. Попробуйте немного позже.');
+        }
+      });
   }
 
   // useEffect
-  React.useEffect(() => {
+  React.useEffect(() => {   
     setIsDisabled(data.name.length <= 1 || data.email.length <= 1 || data.password.length <= 1 || error.name || error.email || error.password);
-  }, [data.name, data.email, data.password, error.name, error.email, error.password])
+  }, [data.name, data.email, data.password, error.name, error.email, error.password]);
 
   // Вёрстка
   return (
@@ -84,6 +105,7 @@ const Register = () => {
           </fieldset>
 
           <div className="register__form-bottom">
+            <p className="register__error-message">{errorRegister}</p>
             <button className={isDisabled ? "register__form-button register__form-button_type_disabled" : "register__form-button"} type="submit" disabled={isDisabled}>Зарегистрироваться</button>
             <p className="register__bottom-text">Уже зарегистрированны? <Link className="register__bottom-link" to="/signin">Войти</Link></p>
           </div>

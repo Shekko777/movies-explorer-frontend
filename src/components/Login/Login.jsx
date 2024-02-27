@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logoSvg from '../../images/logo.svg';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   // Константы
   const [data, setData] = React.useState({
     email: "",
@@ -13,6 +13,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = React.useState('');
   const [isDisabled, setIsDisabled] = React.useState(false);
   const emailRegex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -44,7 +45,10 @@ const Login = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log([data.email, data.password])
+    onLogin(data.email, data.password)
+      .catch(err => {
+        setErrorMessage(`Произошла ошибка ${err}. Повторите попытку немного позже.`)
+      })
   }
 
   // useEffect
@@ -77,6 +81,7 @@ const Login = () => {
           </fieldset>
 
           <div className="login__form-bottom">
+            <p className="login__error-message">{errorMessage}</p>
             <button className={isDisabled ? "login__form-button login__form-button_type_disabled" : "login__form-button"} type="submit" disabled={isDisabled}>Войти</button>
             <p className="login__bottom-text">Еще не зарегистрированны? <Link className="login__bottom-link" to="/signup">Регистрация</Link></p>
           </div>

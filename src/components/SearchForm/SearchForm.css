@@ -29,6 +29,10 @@
   line-height: 20px;
 }
 
+.search-form__input_type_error::placeholder {
+  color: #EE3465;
+}
+
 .search-form__button {
   background-color: #4285F4;
   color: #fff;

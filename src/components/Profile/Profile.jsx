@@ -1,19 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
-const Profile = () => {
+const Profile = ({ onOut, handleChangeUserInfo }) => {
+  const currentUserInfo = React.useContext(CurrentUserContext);
+  // Новые данные из инпутов:
   const [userData, setUserData] = React.useState({
-    name: "Виталий",
-    email: "pochta@yandex.ru",
+    name: currentUserInfo.name,
+    email: currentUserInfo.email,
   });
-  const [errorEmail, setErrorEmail] = React.useState(false)
+  // Старые данные для сравнения:
+  const [oldUserData, setOldUserData] = React.useState({
+    name: currentUserInfo.name,
+    email: currentUserInfo.email,
+  });
 
+  const [buttonStatus, setButtonStatus] = React.useState(false); // Активность кнопки при проверке
+  const [errorEmail, setErrorEmail] = React.useState(false); // Состояние email при ошибке
+  const [messageForUser, setMessageForUser] = React.useState(''); // Сообщение после редактирования профиля;
+  const [successfull, setSuccessfull] = React.useState(true); // Цвет сообщения при ошибке или успехе
+
+  // Регулярка для проверки E-mail:
   const emailRegex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
+  // Изменение инпутов
   const handleChange = (evt) => {
     if (evt.target.name === "email") {
-      !emailRegex.test(String(evt.target.value).toLocaleLowerCase()) ? setErrorEmail(true) : setErrorEmail(false);
+      setErrorEmail(!emailRegex.test(String(evt.target.value).toLocaleLowerCase()));
     }
     setUserData({
       ...userData,
@@ -21,16 +35,39 @@ const Profile = () => {
     })
   }
 
+  // Отправка изменений
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(userData);
+    
+    handleChangeUserInfo(userData.name, userData.email)
+      .then(_ => {
+        setMessageForUser('Данные изменены');
+        setSuccessfull(true);
+      }) 
+      .catch(err => {
+        setMessageForUser(`Произошла ошибка при изменении данных ${err}`)
+        setSuccessfull(false);
+      })
+
+    setOldUserData({
+      name: userData.name,
+      email: userData.email,
+    });
   }
 
+  // Монтирование при загрузки страницы
+  React.useEffect(() => {
+    if ((oldUserData.name === userData.name && oldUserData.email === userData.email) || errorEmail) {
+      setButtonStatus(true)
+    } else {
+      setButtonStatus(false)
+    }
+  }, [userData, oldUserData, errorEmail])
 
   return (
     <main className="profile main">
       <div className="profile__container">
-        <h1 className="profile__title">Привет, Виталий!</h1>
+        <h1 className="profile__title">{`Привет, ${oldUserData.name}!`}</h1>
         <form className="profile__form" onSubmit={handleSubmit} action="#">
           <fieldset className="profile__form-fieldset">
             <label className="profile__form-label">
@@ -45,8 +82,9 @@ const Profile = () => {
           </fieldset>
 
           <div className="profile__form-bottom">
-            <button className="profile__form-button" type="submit" disabled={errorEmail}>Редактировать</button>
-            <Link className="profile__form-exit" to="/signin">Выйти из аккаунта</Link>
+            <p className={successfull ? "profile__message profile__message_color_green" : "profile__message profile__message_color_red"}>{messageForUser}</p>
+            <button className={buttonStatus ? "profile__form-button profile__form-button_disabled" :"profile__form-button"} type="submit" disabled={buttonStatus}>Редактировать</button>
+            <Link onClick={onOut} className="profile__form-exit" to="/">Выйти из аккаунта</Link>
           </div>
         </form>
       </div>

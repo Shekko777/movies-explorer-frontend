@@ -63,6 +63,18 @@
   font-size: 13px;
 }
 
+.profile__message {
+  text-align: center;
+}
+
+.profile__message_color_red {
+  color: #ee3465;
+}
+
+.profile__message_color_green {
+  color: #00FF7F;
+}
+
 .profile__form-button {
   background-color: transparent;
   padding: 0;
@@ -76,6 +88,15 @@
 
 .profile__form-button:hover {
   opacity: .8;
+}
+
+.profile__form-button_disabled {
+  opacity: .6;
+  cursor: auto;
+}
+
+.profile__form-button_disabled:hover {
+  opacity: .6;
 }
 
 .profile__form-exit {
