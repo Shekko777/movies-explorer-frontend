@@ -123,7 +123,7 @@ const App = () => {
 
   // Функция проверки зарегистрированного пользователя
   const checkToken = () => {
-    const token = localStorage.get('token');
+    const token = localStorage.getItem('token');
     if (token) {
       auth.checkToken()
         .then(res => {
