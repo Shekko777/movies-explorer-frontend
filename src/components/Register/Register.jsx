@@ -60,6 +60,7 @@ const Register = ({ onRegister }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setIsDisabled(true);
     onRegister(data.name, data.email, data.password)
       .catch((err) => {
         if (err === 409) {
@@ -67,7 +68,7 @@ const Register = ({ onRegister }) => {
         } else {
           setErrorRegister('На сервере произошла ошибка. Попробуйте немного позже.');
         }
-      });
+      })
   }
 
   // useEffect

@@ -38,7 +38,7 @@ const Profile = ({ onOut, onChangeUserInfo }) => {
   // Отправка изменений
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    
+    setButtonStatus(true);
     onChangeUserInfo(userData.name, userData.email)
       .then(_ => {
         setMessageForUser('Данные изменены');
@@ -48,6 +48,9 @@ const Profile = ({ onOut, onChangeUserInfo }) => {
         setMessageForUser(`Произошла ошибка при изменении данных ${err}`)
         setSuccessfull(false);
       })
+      .finally(() => {
+        setButtonStatus(false);
+      });
   }
 
   // Монтирование при загрузки страницы

@@ -46,6 +46,7 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setIsDisabled(true);
     onLogin(data.email, data.password)
       .then(() => {
         navigate('/movies')

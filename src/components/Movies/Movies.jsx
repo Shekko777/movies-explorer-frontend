@@ -75,7 +75,7 @@ const Movies = ({ onGetMovies, onSavedMovie, onRemoveMovie, savedMovies, onSetSa
           <Preloader />
         ) : (
           <MoviesCardList movies={moviesForRender} searchMessage={searchMessage}>
-            {renderMovies?.map((movie, index) => (<MoviesCard key={index} movie={movie} savedMovies={savedMovies} onSavedMovie={onSavedMovie} onRemoveMovie={onRemoveMovie} setSavedMovies={onSetSavedMovies} />))}
+            {renderMovies?.map((movie) => <MoviesCard key={movie.id} movie={movie} savedMovies={savedMovies} onSavedMovie={onSavedMovie} onRemoveMovie={onRemoveMovie} setSavedMovies={onSetSavedMovies} />)}
           </MoviesCardList>
         )}
         {moviesForRender && !preloaderStatus ? <button onClick={handleButtonShowMore} type="button" className={quantityCards >= moviesForRender?.length ? "movies__more movies__more_type_disabled" : "movies__more"} disabled={quantityCards >= moviesForRender?.length}>Ещё</button> : <></>}

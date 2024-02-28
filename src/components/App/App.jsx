@@ -39,7 +39,7 @@ const App = () => {
         });
         handleSubmitLogin(user.email, password);
       })
-    // Продолжение цепочки в Register
+      .catch(err => console.log(`При регистрации произошла ошибка ${err}`));
   }
 
   // ЛОГИН
@@ -51,7 +51,7 @@ const App = () => {
         handleCheckedToken(); 
         navigate('/movies', {replace: true});
       })
-    // Продолжение цепочки в Login
+      .catch(err => console.log(`При авторизации произошла ошибка ${err}`))
   }
 
   // Функция выхода из профиля 
@@ -66,8 +66,8 @@ const App = () => {
 
   // Получить все фильмы
   const getMovies = () => {
-    return moviesApi.getMovies();
-      // продолжение цепочки в Movies
+    return moviesApi.getMovies()
+      .catch(err => console.log(`При получении всех фильмов произошла ошибка ${err}`));
   }
 
   // Получить сохранённые фильмы
@@ -76,7 +76,7 @@ const App = () => {
       .then(res => {
         setSavedMovies(res);
       })
-      .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`));
+      .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
   }
 
   // Сохранить фильм
@@ -105,9 +105,6 @@ const App = () => {
       .then(resDeletedMovie => {
         setSavedMovies(savedMovies.filter(m => m.movieId !== resDeletedMovie.movieId));
       })
-      .then(_ => {
-        getSavedMovies();
-      })
       .catch(err => console.log(`Не удалось удалить фильм, ошибка: ${err}`));
   }
 
@@ -120,7 +117,7 @@ const App = () => {
           email: dataUser.email,
         });
       })
-    // Продолжение цепочки в Profile
+      .catch(err => console.log(`При обновлении информации произошла ошибка ${err}`))
   }
 
   // Функция проверки зарегистрированного пользователя

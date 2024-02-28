@@ -36,11 +36,7 @@ const SavedMovies = ({ savedMovies, onRemoveMovie }) => {
       <div className="saved-movies__container">
         <SearchForm onSubmit={handleSubmit} movies={savedMovies} savedSearch={true} checkedStatus={checked} onChecked={handleChecked} movieTitle={movieTitle} setMovieTitle={setMovieTitle} saved={true} />
         <MoviesCardList movies={true}>
-          {renderMovies?.map((movie, index) => {
-            return (
-              <MoviesCard key={index} movie={movie} handleRemoveMovie={onRemoveMovie} savePage={true} savedMovies={savedMovies}  />
-            )  
-          })}
+          {renderMovies?.map((movie) => <MoviesCard key={movie.movieId} movie={movie} onRemoveMovie={onRemoveMovie} savePage={true} savedMovies={savedMovies}  />)}
         </MoviesCardList>
       </div>
     </main>
