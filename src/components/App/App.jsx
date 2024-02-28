@@ -47,8 +47,9 @@ const App = () => {
     return auth.signIn(email, password)
       .then(res => {
         localStorage.setItem('token', res.jwt);
-        navigate('/movies');
+        setLoggedIn(true);
         handleCheckedToken(); 
+        navigate('/movies', {replace: true});
       })
     // Продолжение цепочки в Login
   }

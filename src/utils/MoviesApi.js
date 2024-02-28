@@ -21,7 +21,6 @@ class MoviesApi {
     }).then(this._getResponce);
 
   }
-
 }
 
 const apiConfig = {

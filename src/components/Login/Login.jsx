@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logoSvg from '../../images/logo.svg';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
   // Константы
   const [data, setData] = React.useState({
     email: "",
@@ -46,6 +47,9 @@ const Login = ({ onLogin }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onLogin(data.email, data.password)
+      .then(() => {
+        navigate('/movies')
+      })
       .catch(err => {
         setErrorMessage(`Произошла ошибка ${err}. Повторите попытку немного позже.`)
       })
