@@ -4,7 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './SavedMovies.css';
 
-const SavedMovies = ({ savedMovies, handleRemoveMovie }) => {
+const SavedMovies = ({ savedMovies, onRemoveMovie }) => {
   const [checked, setChecked] = React.useState(false);
   const [movieTitle, setMovieTitle] = React.useState('');
   const [renderMovies, setRenderMovies] = React.useState([]);
@@ -34,11 +34,11 @@ const SavedMovies = ({ savedMovies, handleRemoveMovie }) => {
   return (
     <main className="saved-movies main">
       <div className="saved-movies__container">
-        <SearchForm handleSubmit={handleSubmit} movies={savedMovies} savedSearch={true} checkedStatus={checked} handleChecked={handleChecked} movieTitle={movieTitle} setMovieTitle={setMovieTitle} saved={true} />
+        <SearchForm onSubmit={handleSubmit} movies={savedMovies} savedSearch={true} checkedStatus={checked} onChecked={handleChecked} movieTitle={movieTitle} setMovieTitle={setMovieTitle} saved={true} />
         <MoviesCardList movies={true}>
           {renderMovies?.map((movie, index) => {
             return (
-              <MoviesCard key={index} movie={movie} handleRemoveMovie={handleRemoveMovie} savePage={true} savedMovies={savedMovies}  />
+              <MoviesCard key={index} movie={movie} handleRemoveMovie={onRemoveMovie} savePage={true} savedMovies={savedMovies}  />
             )  
           })}
         </MoviesCardList>

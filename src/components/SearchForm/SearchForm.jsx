@@ -1,7 +1,7 @@
 import React from "react";
 import './SearchForm.css';
 
-const SearchForm = ({ handleSubmit, checkedStatus, handleChecked, movieTitle, setMovieTitle, saved }) => {
+const SearchForm = ({ onSubmit, checkedStatus, onChecked, movieTitle, setMovieTitle, saved }) => {
   const [focusInput, setFocusInput] = React.useState(false);
   const [errorPlaceholder, setErrorPlaceholder] = React.useState(false)
 
@@ -11,19 +11,19 @@ const SearchForm = ({ handleSubmit, checkedStatus, handleChecked, movieTitle, se
     } 
   }
 
-  const formSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     
     if (!movieTitle) {
       setErrorPlaceholder(true);
     } else {
       setErrorPlaceholder(false);
-      handleSubmit(movieTitle.toLowerCase());
+      onSubmit(movieTitle.toLowerCase());
     }
   }
   
-  const formChecked = () => {
-    handleChecked();
+  const handleChecked = () => {
+    onChecked();
   }
 
   React.useEffect(() => {
@@ -34,19 +34,19 @@ const SearchForm = ({ handleSubmit, checkedStatus, handleChecked, movieTitle, se
         setErrorPlaceholder(false);
       }
     } else {
-      handleSubmit(movieTitle.toLowerCase());
+      onSubmit(movieTitle.toLowerCase());
     }
   }, [checkedStatus]);
 
   return (
-    <form noValidate className="search-form" onSubmit={formSubmit}>
+    <form noValidate className="search-form" onSubmit={handleSubmit}>
       <fieldset className={focusInput ? "search-form__fieldset search-form__fieldset_focus" : "search-form__fieldset"}>
         <input className={errorPlaceholder ? "search-form__input search-form__input_type_error" : "search-form__input"} onChange={handleChange} onFocus={() => setFocusInput(!focusInput)} onBlur={() => setFocusInput(!focusInput)} value={movieTitle} placeholder={errorPlaceholder ? "Нужно ввести ключевое слово" : "Фильм"} autoComplete="off" required name="name" type="text" />
         <button className="search-form__button" type="submit">Поиск</button>
       </fieldset>
 
       <label className="search-form__checkbox-wrapper">
-        <input className="search-form__checkbox" onChange={formChecked} checked={checkedStatus} id="checkbox" type="checkbox" name="checkbox" />
+        <input className="search-form__checkbox" onChange={handleChecked} checked={checkedStatus} id="checkbox" type="checkbox" name="checkbox" />
         <span className="search-form__checkbox-span"></span>
         Короткометражки
       </label>
@@ -55,17 +55,3 @@ const SearchForm = ({ handleSubmit, checkedStatus, handleChecked, movieTitle, se
 }
 
 export default SearchForm;
-
- // if (movieTitle.length === 0) {
-    //   setErrorPlaceholder(true);
-    //   return;
-    // } else {
-    //   handleSubmit(movieTitle);
-    // } 
-
-    
-  // React.useEffect(() => {
-  //   if (movieTitle.length !== 0) {
-  //     handleSubmit(movieTitle);
-  //   } 
-  // }, [checkedStatus]);

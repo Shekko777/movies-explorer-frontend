@@ -4,7 +4,7 @@ import moviesApiURL from "../../utils/constants";
 import savedIcon from "../../images/movies/saved.svg";
 import deleteIcon from '../../images/movies/delete-button.svg';
 
-const MoviesCard = ({ movie, savedMovies, handleSavedMovie, handleRemoveMovie, savePage }) => {
+const MoviesCard = ({ movie, savedMovies, onSavedMovie, onRemoveMovie, savePage }) => {
   const filmImage = moviesApiURL + movie.image.url;
   const [savedMovie, setSavedMovie] = React.useState(false);
   const moviesTime = {
@@ -14,15 +14,15 @@ const MoviesCard = ({ movie, savedMovies, handleSavedMovie, handleRemoveMovie, s
 
   // Нажатие на удаление
   const handleRemove = () => {
-    handleRemoveMovie(movie);
+    onRemoveMovie(movie);
   }
 
   // Нажатие на сохранение
   const handleSaveButton = () => {
     if (savedMovies.some(mov => mov.movieId === movie.id)) {
-      handleRemoveMovie(savedMovie);
+      onRemoveMovie(savedMovie);
     } else {
-      handleSavedMovie(movie);
+      onSavedMovie(movie);
     }
   }
 

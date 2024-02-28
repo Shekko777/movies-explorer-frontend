@@ -22,7 +22,7 @@ import moviesApi from '../../utils/MoviesApi';
 
 const App = () => {
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('token') || false);
   const [currentUser, setCurrentUser] = React.useState({
     name: '',
     email: '',
@@ -48,7 +48,7 @@ const App = () => {
       .then(res => {
         localStorage.setItem('token', res.jwt);
         navigate('/movies');
-        checkToken();
+        handleCheckedToken(); 
       })
     // Продолжение цепочки в Login
   }
@@ -60,12 +60,13 @@ const App = () => {
         setLoggedIn(false);
         localStorage.clear();
       })
-      .catch(err => console.log(`Не удалось выйти, ошибка: ${err}`))
+      .catch(err => console.log(`Не удалось выйти, ошибка: ${err}`));
   }
 
   // Получить все фильмы
   const getMovies = () => {
     return moviesApi.getMovies();
+      // продолжение цепочки в Movies
   }
 
   // Получить сохранённые фильмы
@@ -116,23 +117,23 @@ const App = () => {
         setCurrentUser({
           name: dataUser.name,
           email: dataUser.email,
-        })
+        });
       })
     // Продолжение цепочки в Profile
   }
 
   // Функция проверки зарегистрированного пользователя
-  const checkToken = () => {
+  const handleCheckedToken = () => {
     const token = localStorage.getItem('token');
     if (token) {
       auth.checkToken()
-        .then(res => {
+      .then(res => {
           setLoggedIn(true);
-          getSavedMovies();
           setCurrentUser({
             name: res.name,
             email: res.email,
           })
+          getSavedMovies();
         })
         .catch(err => console.log(`Вы не зарегистрированны: ${err}`))
     }
@@ -140,7 +141,7 @@ const App = () => {
 
   // Проверка авторизованности при заходе на сайт
   React.useEffect(() => {
-    checkToken();
+    handleCheckedToken();
   }, []);
 
   return (
@@ -151,9 +152,9 @@ const App = () => {
           <Route path='/' element={<Main />} />
           <Route path='/signin' element={loggedIn ? <Navigate to="/movies" replace /> : <Login onLogin={handleSubmitLogin} />} />
           <Route path='/signup' element={loggedIn ? <Navigate to="/movies" replace /> : <Register onRegister={handleSubmitRegister} />} />
-          <Route path='/profile' element={<ProtectedRoute loggedIn={loggedIn} component={Profile} onOut={handleSignOut} currentUser={currentUser} handleChangeUserInfo={handleChangeUserInfo} />} />
-          <Route path='/movies' element={<ProtectedRoute component={Movies} loggedIn={loggedIn} handleSavedMovie={handleSavedMovie} handleRemoveMovie={handleRemoveMovie} savedMovies={savedMovies} getMovies={getMovies} setSavedMovies={setSavedMovies} />} />
-          <Route path='/saved-movies' element={<ProtectedRoute component={SavedMovies} setSavedMovies={setSavedMovies} getSavedMovies={getSavedMovies} loggedIn={loggedIn} savedMovies={savedMovies} handleRemoveMovie={handleRemoveMovie} />} />
+          <Route path='/profile' element={<ProtectedRoute loggedIn={loggedIn} component={Profile} onOut={handleSignOut} currentUser={currentUser} onChangeUserInfo={handleChangeUserInfo} />} />
+          <Route path='/movies' element={<ProtectedRoute component={Movies} loggedIn={loggedIn} onSavedMovie={handleSavedMovie} onRemoveMovie={handleRemoveMovie} savedMovies={savedMovies} onGetMovies={getMovies} onSetSavedMovies={setSavedMovies} />} />
+          <Route path='/saved-movies' element={<ProtectedRoute component={SavedMovies} loggedIn={loggedIn} savedMovies={savedMovies} onRemoveMovie={handleRemoveMovie} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>

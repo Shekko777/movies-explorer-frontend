@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 import './Profile.css';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
-const Profile = ({ onOut, handleChangeUserInfo }) => {
+const Profile = ({ onOut, onChangeUserInfo }) => {
   const currentUserInfo = React.useContext(CurrentUserContext);
   // Новые данные из инпутов:
   const [userData, setUserData] = React.useState({
-    name: currentUserInfo.name,
-    email: currentUserInfo.email,
+    name: '',
+    email: '',
   });
   // Старые данные для сравнения:
   const [oldUserData, setOldUserData] = React.useState({
-    name: currentUserInfo.name,
-    email: currentUserInfo.email,
+    name: '',
+    email: '',
   });
 
   const [buttonStatus, setButtonStatus] = React.useState(false); // Активность кнопки при проверке
@@ -39,7 +39,7 @@ const Profile = ({ onOut, handleChangeUserInfo }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     
-    handleChangeUserInfo(userData.name, userData.email)
+    onChangeUserInfo(userData.name, userData.email)
       .then(_ => {
         setMessageForUser('Данные изменены');
         setSuccessfull(true);
@@ -48,11 +48,6 @@ const Profile = ({ onOut, handleChangeUserInfo }) => {
         setMessageForUser(`Произошла ошибка при изменении данных ${err}`)
         setSuccessfull(false);
       })
-
-    setOldUserData({
-      name: userData.name,
-      email: userData.email,
-    });
   }
 
   // Монтирование при загрузки страницы
@@ -60,9 +55,22 @@ const Profile = ({ onOut, handleChangeUserInfo }) => {
     if ((oldUserData.name === userData.name && oldUserData.email === userData.email) || errorEmail) {
       setButtonStatus(true)
     } else {
+      setMessageForUser('');
       setButtonStatus(false)
     }
   }, [userData, oldUserData, errorEmail])
+  
+  React.useEffect(() => {
+    setUserData({
+      name: currentUserInfo.name,
+      email: currentUserInfo.email,
+    })
+
+    setOldUserData({
+      name: currentUserInfo.name,
+      email: currentUserInfo.email,
+    })
+  }, [currentUserInfo])
 
   return (
     <main className="profile main">

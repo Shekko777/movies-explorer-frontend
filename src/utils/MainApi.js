@@ -28,7 +28,11 @@ class MainApi {
   ) {
     return fetch(`${this._url}/movies`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
       body: JSON.stringify({
         country,
         director,
@@ -48,21 +52,31 @@ class MainApi {
   removeMovies(id) {
     return fetch(`${this._url}/movies/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
     }).then(this._getResponce);
   }
 
   getSavedMovies() {
     return fetch(`${this._url}/movies`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
     }).then(this._getResponce);
   }
 
   changeInfo(name, email) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
       body: JSON.stringify({ name, email })
     }).then(this._getResponce)
   }
@@ -70,12 +84,8 @@ class MainApi {
 }
 
 const apiConfig = {
-  // url: "http://127.0.0.1:3000",
+  // url: "http://127.0.0.1:3000", <= оставил для работы с локальной БД
   url: "https://api-shekko-movie.nomoredomainsmonster.ru",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem('token')}`
-  },
 };
 
 const mainApi = new MainApi(apiConfig);
