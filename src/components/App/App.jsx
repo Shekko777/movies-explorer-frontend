@@ -47,7 +47,6 @@ const App = () => {
     return auth.signIn(email, password)
       .then(res => {
         localStorage.setItem('token', res.jwt);
-        setLoggedIn(true);
         navigate('/movies');
         checkToken();
       })
@@ -122,8 +121,10 @@ const App = () => {
     // Продолжение цепочки в Profile
   }
 
-    // Функция проверки зарегистрированного пользователя
-    const checkToken = () => {
+  // Функция проверки зарегистрированного пользователя
+  const checkToken = () => {
+    const token = localStorage.get('token');
+    if (token) {
       auth.checkToken()
         .then(res => {
           setLoggedIn(true);
@@ -135,6 +136,7 @@ const App = () => {
         })
         .catch(err => console.log(`Вы не зарегистрированны: ${err}`))
     }
+  }
 
   // Проверка авторизованности при заходе на сайт
   React.useEffect(() => {
