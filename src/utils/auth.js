@@ -43,7 +43,8 @@ class Auth {
 }
 
 const config = {
-  url: "http://127.0.0.1:3000",
+  // url: "http://127.0.0.1:3000",
+  url: "https://api-shekko-movie.nomoredomainsmonster.ru",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
