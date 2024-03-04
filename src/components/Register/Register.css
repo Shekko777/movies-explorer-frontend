@@ -93,6 +93,12 @@
   bottom: 70px;
 }
 
+.register__error-message {
+  color: #ee3465;
+  text-align: center;
+  max-width: 100%;
+}
+
 .register__form-button {
   background-color: #4285f4;
   text-align: center;
@@ -105,10 +111,12 @@
   margin-bottom: 16px;
   font-family: "Inter", sans-serif;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .register__form-button_type_disabled {
   opacity: 0.8;
+  cursor: auto;
 }
 
 .register__bottom-text {

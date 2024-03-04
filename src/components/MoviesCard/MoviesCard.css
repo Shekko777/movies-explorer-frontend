@@ -19,8 +19,9 @@
 
 .movies__name {
   margin: 0;
-  max-width: 240px;
+  max-width: 200px;
   font-size: 15px;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -30,6 +31,10 @@
   margin: 0;
   font-size: 13px;
   color: #8B8B8B;
+}
+
+.movies__link {
+  width: 100%;
 }
 
 .movies__img {

@@ -13,6 +13,18 @@
 
 ---
 
+<h2 style="color: #4285B4;" >Ссылка на пулреквест:</h2>
+
+```
+https://github.com/Shekko777/movies-explorer-frontend/pull/2
+```
+
+<h2 style="color: #4285B4;" >Ссылка на задеплоенный проект:</h2>
+
+```
+https://explorer-movie-shekk.nomoredomainsmonster.ru
+```
+
 <h2 style="color: #4285B4;" >Ссылка на макет:</h2>
 
 ```
